@@ -5,7 +5,7 @@ __pycache__/
 *.sqlite3
 venv/
 .env
-.env.*
+.env.local
 postgres_data/
 static/
 media/

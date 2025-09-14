@@ -106,12 +106,6 @@ GEMINI_API_KEY=your_api_key_here # Required when USE_MOCK=false
 SECRET_KEY=your-secret-key-here
 DEBUG=True
 
-# Database Configuration (optional)
-POSTGRES_DB=app_gen_db
-POSTGRES_USER=postgres
-POSTGRES_PASSWORD=password
-POSTGRES_HOST=localhost
-POSTGRES_PORT=5432
 ```
 
 ### Frontend Environment (.env)
