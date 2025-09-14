@@ -4,6 +4,7 @@ import uuid
 import logging
 from typing import Dict, Any
 
+from backend.api.prompt import SYSTEM_PROMPT_FOR_APP_GEN
 import google.generativeai as genai
 from django.conf import settings
 
@@ -61,30 +62,7 @@ def call_genai_system(user_prompt: str) -> Dict[str, Any]:
         model = genai.GenerativeModel('gemini-pro')
         
         # Create system prompt for structured response
-        system_prompt = """You are an AI code generator that creates complete application scaffolds.
-
-Given a user prompt, generate a JSON response with the following structure:
-{
-  "files": [
-    {"path": "relative/path/to/file", "content": "file content here"},
-    {"path": "another/file.js", "content": "more content"}
-  ],
-  "meta": {
-    "description": "Brief description of what was generated",
-    "technologies": ["list", "of", "technologies"],
-    "instructions": "How to run/deploy the generated app"
-  }
-}
-
-Rules:
-1. Generate realistic, functional code
-2. Include proper file structure for the requested type of application
-3. Add README.md with setup instructions
-4. Include both frontend and backend files when appropriate
-5. Use modern best practices
-6. Keep files concise but functional
-
-Return ONLY the JSON response, no additional text."""
+        system_prompt = SYSTEM_PROMPT_FOR_APP_GEN
         
         # Combine system prompt with user prompt
         full_prompt = f"{system_prompt}\n\nUser Request: {user_prompt}"
