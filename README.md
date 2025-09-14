@@ -21,7 +21,7 @@ pip install -r requirements.txt
 # Set up environment
 cp .env.example .env
 
-# Run migrations
+# Run migrations (if using database, not applicable for demo)
 python manage.py migrate
 
 # Start the Django server
